@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Data Encryption</title>
+  <style>
+    :root {
+        background-image: linear-gradient(45deg, #1a1a2e, #16213e);
+      --text-color: #333;
+      --accent-color: #3f51b5;
+      --button-bg: #3f51b5;
+      --button-hover-bg: #303f9f;
+      --button-hover-color: #fff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      
+      
+    }
+    @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    .container {
+      border-style: solid;
+      border-color: blueviolet;
+      width: 90%;
+      max-width: 500px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+    }
+
+    h1 {
+      color: var(--accent-color);
+      text-align: center;
+    }
+
+    textarea {
+      width: 95%;
+      height: 80px;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: var(--button-bg);
+      color: var(--button-hover-color);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      flex: 1;
+      margin: 0 5px;
+    }
+
+    button:hover {
+      background-color: var(--button-hover-bg);
+    }
+
+    .result {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      word-wrap: break-word;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container ">
+    <h1>Data Encryption</h1>
+    <textarea id="plaintext" placeholder="Enter text to encrypt"></textarea>
+    <div class="buttons">
+      <button onclick="encryptData('AES')">AES</button>
+      <button onclick="encryptData('DES')">DES</button> 
+      <button onclick="encryptData('RSA')">RSA</button>
+    </div>
+    <div class="result" id="result">
+      Encrypted text will appear here.
+    </div>
+    <div class= "result" id = "key">
+      Selected key
+    </div>
+    <a href="detectPage.html"><button  style="margin-top:10px;">Go to Prediction</button></a>
+  </div>
+
+  <script>
+    async function encryptData(algorithm) {
+      const plaintext = document.getElementById("plaintext").value;
+
+      if (!plaintext) {
+        alert("Please enter text to encrypt.");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://127.0.0.1:5001/api/encrypt", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ plaintext, algorithm }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+    document.getElementById("result").textContent = `Encrypted: ${data.encrypted}`;
+    document.getElementById("key").textContent = `Key: ${data.key}`;
+    }
+ else {
+          alert(data.error || "An error occurred.");
+        }
+      } catch (error) {
+        alert("Failed to connect to the server.");
+      }
+    }
+  </script>
+</body>
+</html>

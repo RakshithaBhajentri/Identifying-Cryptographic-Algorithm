@@ -1,0 +1,167 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Body Styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-image: url("http://getwallpapers.com/wallpaper/full/c/3/b/233948.jpg");
+
+    background-size: cover; /* Ensures the background image covers the entire page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  /* Flex Container */
+  .main-container {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  /* Info Section Styling */
+  .info-section {
+    flex: 2;
+    background-color: #ffffff;
+    border-left: 8px solid #0937a2;
+    padding: 30px;
+    text-align: left;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .info-section h1 {
+    font-size: 2rem;
+    color: #2C3E50;
+    margin-bottom: 15px;
+  }
+
+  .info-section p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+
+  .info-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 15px 0;
+  }
+
+  .info-section ul li {
+    font-size: 1rem;
+    margin: 8px 0;
+    padding-left: 25px;
+    position: relative;
+    color: #2C3E50;
+  }
+
+  .info-section ul li::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    color: #3498db;
+  }
+
+  .call-to-action {
+    font-size: 1.2rem;
+    color: #2C3E50;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  /* Login Container */
+  .login-container {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  /* Login Form Styling */
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #3498db;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    font-size: 14px;
+    color: #555;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .login-btn {
+    background-color: #28a745; /* Green color */
+    color: white;
+  }
+
+  .login-btn:hover {
+    background-color: #218838;
+  }
+
+  .or {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .google-login-btn {
+    background-color: #db4437; /* Red color */
+    color: white;
+    margin-top: 10px;
+  }
+
+  .google-login-btn:hover {
+    background-color: #c23321;
+  }
+
+  .signup-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .signup-link a {
+    color: #3498db;
+    text-decoration: none;
+  }
+
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  
